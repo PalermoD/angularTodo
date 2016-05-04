@@ -3,32 +3,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Angular To Do List</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="styles/main.css">
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
 </head>
-<body ng-app="angularToDo">
-	<h1>Angular ToDo App</h1>
-	<div class="list">
-		<input type="checkbox"/>
-		<label class="editing-label">A sample todo</label>
-		<input class="editing-label" type="text">
+<body ng-app="angularTodo">
+   
+<h1>Angular ToDo App</h1>
+	<div ng-controller="mainCtrl" class="list">
+		
+		<div class="item" ng-class="{'editing-item': editing, 'edited': todo.edited}" ng-repeat=" todo in todos">
+		   <input ng-model="todo.completed" type="checkbox"/>
+		   <label ng-hide="editing" class="editing-label"> {{todo.name}}</label>
+		   <input ng-change="todo.edited" ng-blur="editing = false;" ng-show="editing" ng-model="todo.name" class="editing-label" type="text"/>
+	       <div class="actions">
+		     <a href="" ng-click="editing = !editing">edit</a>
+		     <a href="">save</a>
+		     <a href="">delete</a>
+		   </div>
+       </div>
+	     {{ todos }}
 	</div>
-
-	<div class="actions">
-		<a href="">edit</a>
-		<a href="">save</a>
-		<a href="">delete</a>
-	</div>
-
+     
 
 
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="vendor/angular.js" type="text"></script>
 	<script src="scripts/app.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="scripts/hello-world.js"></script>
 	
 </body>
 </html>
